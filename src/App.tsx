@@ -12,6 +12,8 @@ import Courses from './pages/Courses';
 import Enrollments from './pages/Enrollments';
 import Advisor from './pages/Advisor';
 
+import Landing from './pages/Landing';
+
 import { AuthProvider, AuthContext } from './context/AuthContext';
 import { useContext } from 'react';
 
@@ -30,24 +32,23 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* Public Routes */}
+          <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
           {/* Protected Routes with Navbar layout */}
           <Route
-            path="/"
             element={
               <ProtectedRoute>
                 <Navbar />
               </ProtectedRoute>
             }
           >
-            <Route index element={<Navigate to="/dashboard" replace />} />
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="students" element={<Students />} />
-            <Route path="courses" element={<Courses />} />
-            <Route path="enrollments" element={<Enrollments />} />
-            <Route path="advisor" element={<Advisor />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/students" element={<Students />} />
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/enrollments" element={<Enrollments />} />
+            <Route path="/advisor" element={<Advisor />} />
           </Route>
         </Routes>
       </BrowserRouter>
