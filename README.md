@@ -70,6 +70,14 @@ graph TD
     Groq -- Completion --> API
 ```
 
+## Screenshots
+
+![Login Screen](screenshots/login.png)
+![Dashboard](screenshots/dashboard.png)
+![Students Management](screenshots/students.png)
+![Course Catalog](screenshots/courses.png)
+![AI Advisor](screenshots/advisor.png)
+
 ## API Overview
 The backend exposes the following RESTful groups:
 - **Authentication:** `POST /auth/login`, `POST /auth/register` for obtaining JWT tokens.
@@ -199,4 +207,9 @@ By building this project, I gained practical experience in:
 - **Database Design:** Utilizing SQLAlchemy ORM to manage complex relational data and constraints.
 - **Authentication:** Implementing secure, stateless JWT authentication.
 - **Frontend-Backend Integration:** Connecting a React Single Page Application to an external API via Axios interceptors.
-- **Deployment:** Containerizing and deploying full-stack architectures across Render and Vercel. 
+- **Deployment:** Containerizing and deploying full-stack architectures across Render and Vercel.
+
+## Author
+**Name:** [Your Name]  
+**LinkedIn:** [Your LinkedIn URL]  
+**GitHub:** [Your GitHub Profile URL]  
