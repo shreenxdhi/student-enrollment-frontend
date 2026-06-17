@@ -1,5 +1,7 @@
 # Student Enrollment Portal
 
+**[🚀 View Live Frontend Demo](https://student-enrollment-frontend.vercel.app)** | **[📡 View Live Backend API](https://student-enrollment-api-8xt6.onrender.com)**
+
 ## Project Overview
 The Student Enrollment Portal is a full-stack web application designed to manage university academic records. It provides an intuitive interface for university administrators to oversee student profiles, course catalogs, and enrollment records. The system also features an AI-powered Academic Advisor that answers common queries regarding university policies. This project was built to demonstrate end-to-end full-stack development, database architecture, and API integration.
 
