@@ -51,3 +51,4 @@ coverage/
 
 # Personal / Local scripts
 capture_screenshots.js
+mobile_test.js
