@@ -50,16 +50,16 @@ const Advisor = () => {
   };
 
   return (
-    <div className="h-[calc(100vh-6rem)] flex flex-col">
+    <div className="h-[calc(100dvh-8rem)] md:h-[calc(100vh-6rem)] flex flex-col">
       <h1 className="text-3xl font-bold text-gray-900 mb-6">AI Academic Advisor</h1>
 
       <div className="flex-1 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col overflow-hidden">
         {/* Chat Messages */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-gray-50/50">
+        <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-4 md:space-y-6 bg-gray-50/50">
           {messages.map((msg) => (
             <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-              <div className={`flex max-w-[80%] ${msg.sender === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
-                <div className={`flex-shrink-0 h-10 w-10 rounded-full flex items-center justify-center ${msg.sender === 'user' ? 'bg-blue-100 ml-4' : 'bg-purple-100 mr-4'}`}>
+              <div className={`flex max-w-[90%] md:max-w-[80%] ${msg.sender === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
+                <div className={`flex-shrink-0 h-8 w-8 md:h-10 md:w-10 rounded-full flex items-center justify-center ${msg.sender === 'user' ? 'bg-blue-100 ml-3 md:ml-4' : 'bg-purple-100 mr-3 md:mr-4'}`}>
                   {msg.sender === 'user' ? <User className="h-6 w-6 text-blue-600" /> : <Bot className="h-6 w-6 text-purple-600" />}
                 </div>
                 <div className={`px-5 py-3 rounded-2xl shadow-sm ${msg.sender === 'user' ? 'bg-blue-600 text-white rounded-tr-none' : 'bg-white border border-gray-100 text-gray-800 rounded-tl-none'}`}>
@@ -74,9 +74,9 @@ const Advisor = () => {
           ))}
           {loading && (
             <div className="flex justify-start">
-              <div className="flex flex-row max-w-[80%]">
-                <div className="flex-shrink-0 h-10 w-10 rounded-full flex items-center justify-center bg-purple-100 mr-4">
-                  <Bot className="h-6 w-6 text-purple-600" />
+              <div className="flex flex-row max-w-[90%] md:max-w-[80%]">
+                <div className="flex-shrink-0 h-8 w-8 md:h-10 md:w-10 rounded-full flex items-center justify-center bg-purple-100 mr-3 md:mr-4">
+                  <Bot className="h-5 w-5 md:h-6 md:w-6 text-purple-600" />
                 </div>
                 <div className="px-5 py-4 rounded-2xl shadow-sm bg-white border border-gray-100 rounded-tl-none">
                   <div className="flex space-x-2">

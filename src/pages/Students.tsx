@@ -89,10 +89,10 @@ const Students = () => {
         {!showForm && (
           <button
             onClick={() => setShowForm(true)}
-            className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+            className="flex items-center space-x-2 bg-blue-600 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg hover:bg-blue-700 transition-colors"
           >
             <Plus className="h-5 w-5" />
-            <span>Add Student</span>
+            <span className="hidden sm:inline">Add Student</span>
           </button>
         )}
       </div>
@@ -135,43 +135,45 @@ const Students = () => {
         </div>
       ) : (
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID / Name</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Major</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {students.map((student) => (
-                <tr key={student.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex flex-col">
-                      <span className="font-medium text-gray-900">{student.first_name} {student.last_name}</span>
-                      <span className="text-sm text-gray-500">{student.student_id} | {student.email}</span>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{student.major}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{student.enrollment_year}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <button onClick={() => handleEdit(student)} className="text-blue-600 hover:text-blue-900 mr-4">
-                      <Edit2 className="h-5 w-5 inline" />
-                    </button>
-                    <button onClick={() => handleDelete(student.id)} className="text-red-600 hover:text-red-900">
-                      <Trash2 className="h-5 w-5 inline" />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-              {students.length === 0 && (
+          <div className="overflow-x-auto w-full">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
                 <tr>
-                  <td colSpan={4} className="px-6 py-8 text-center text-gray-500">No students found.</td>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID / Name</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Major</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
+                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                 </tr>
-              )}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {students.map((student) => (
+                  <tr key={student.id} className="hover:bg-gray-50">
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="flex flex-col">
+                        <span className="font-medium text-gray-900">{student.first_name} {student.last_name}</span>
+                        <span className="text-sm text-gray-500">{student.student_id} | {student.email}</span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{student.major}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{student.enrollment_year}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                      <button onClick={() => handleEdit(student)} className="text-blue-600 hover:text-blue-900 mr-4">
+                        <Edit2 className="h-5 w-5 inline" />
+                      </button>
+                      <button onClick={() => handleDelete(student.id)} className="text-red-600 hover:text-red-900">
+                        <Trash2 className="h-5 w-5 inline" />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+                {students.length === 0 && (
+                  <tr>
+                    <td colSpan={4} className="px-6 py-8 text-center text-gray-500">No students found.</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
     </div>

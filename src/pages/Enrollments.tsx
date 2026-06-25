@@ -102,52 +102,54 @@ const Enrollments = () => {
               ))}
             </select>
           </div>
-          <button type="submit" className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 h-[42px]">
+          <button type="submit" className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 h-[42px] w-full md:w-auto mt-2 md:mt-0">
             Enroll
           </button>
         </form>
       </div>
 
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Student</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Course</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Enrollment Date</th>
-              <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {enrollments.map((enrollment) => (
-              <tr key={enrollment.id} className="hover:bg-gray-50">
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">
-                    {enrollment.student.first_name} {enrollment.student.last_name}
-                  </div>
-                  <div className="text-sm text-gray-500">{enrollment.student.student_id}</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">{enrollment.course.course_code}</div>
-                  <div className="text-sm text-gray-500">{enrollment.course.course_name}</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {new Date(enrollment.enrollment_date).toLocaleDateString()}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <button onClick={() => handleDelete(enrollment.id)} className="text-red-600 hover:text-red-900">
-                    <Trash2 className="h-5 w-5 inline" />
-                  </button>
-                </td>
-              </tr>
-            ))}
-            {enrollments.length === 0 && (
+        <div className="overflow-x-auto w-full">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
               <tr>
-                <td colSpan={4} className="px-6 py-8 text-center text-gray-500">No enrollments found.</td>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Student</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Course</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Enrollment Date</th>
+                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {enrollments.map((enrollment) => (
+                <tr key={enrollment.id} className="hover:bg-gray-50">
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm font-medium text-gray-900">
+                      {enrollment.student.first_name} {enrollment.student.last_name}
+                    </div>
+                    <div className="text-sm text-gray-500">{enrollment.student.student_id}</div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm text-gray-900">{enrollment.course.course_code}</div>
+                    <div className="text-sm text-gray-500">{enrollment.course.course_name}</div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {new Date(enrollment.enrollment_date).toLocaleDateString()}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <button onClick={() => handleDelete(enrollment.id)} className="text-red-600 hover:text-red-900">
+                      <Trash2 className="h-5 w-5 inline" />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+              {enrollments.length === 0 && (
+                <tr>
+                  <td colSpan={4} className="px-6 py-8 text-center text-gray-500">No enrollments found.</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

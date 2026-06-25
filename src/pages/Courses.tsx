@@ -83,10 +83,10 @@ const Courses = () => {
         {!showForm && (
           <button
             onClick={() => setShowForm(true)}
-            className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+            className="flex items-center space-x-2 bg-blue-600 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg hover:bg-blue-700 transition-colors"
           >
             <Plus className="h-5 w-5" />
-            <span>Add Course</span>
+            <span className="hidden sm:inline">Add Course</span>
           </button>
         )}
       </div>
@@ -121,43 +121,45 @@ const Courses = () => {
         </div>
       ) : (
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Course</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Credits</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Instructor</th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {courses.map((course) => (
-                <tr key={course.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex flex-col">
-                      <span className="font-medium text-gray-900">{course.course_code}</span>
-                      <span className="text-sm text-gray-500">{course.course_name}</span>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{course.credits}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{course.instructor || '-'}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <button onClick={() => handleEdit(course)} className="text-blue-600 hover:text-blue-900 mr-4">
-                      <Edit2 className="h-5 w-5 inline" />
-                    </button>
-                    <button onClick={() => handleDelete(course.id)} className="text-red-600 hover:text-red-900">
-                      <Trash2 className="h-5 w-5 inline" />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-              {courses.length === 0 && (
+          <div className="overflow-x-auto w-full">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
                 <tr>
-                  <td colSpan={4} className="px-6 py-8 text-center text-gray-500">No courses found.</td>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Course</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Credits</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Instructor</th>
+                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                 </tr>
-              )}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {courses.map((course) => (
+                  <tr key={course.id} className="hover:bg-gray-50">
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="flex flex-col">
+                        <span className="font-medium text-gray-900">{course.course_code}</span>
+                        <span className="text-sm text-gray-500">{course.course_name}</span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{course.credits}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{course.instructor || '-'}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                      <button onClick={() => handleEdit(course)} className="text-blue-600 hover:text-blue-900 mr-4">
+                        <Edit2 className="h-5 w-5 inline" />
+                      </button>
+                      <button onClick={() => handleDelete(course.id)} className="text-red-600 hover:text-red-900">
+                        <Trash2 className="h-5 w-5 inline" />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+                {courses.length === 0 && (
+                  <tr>
+                    <td colSpan={4} className="px-6 py-8 text-center text-gray-500">No courses found.</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
     </div>
