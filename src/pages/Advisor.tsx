@@ -2,6 +2,8 @@ import type React from 'react';
 import { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User } from 'lucide-react';
 import api from '../services/api';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface ChatMessage {
   id: string;
@@ -61,7 +63,9 @@ const Advisor = () => {
                   {msg.sender === 'user' ? <User className="h-6 w-6 text-blue-600" /> : <Bot className="h-6 w-6 text-purple-600" />}
                 </div>
                 <div className={`px-5 py-3 rounded-2xl shadow-sm ${msg.sender === 'user' ? 'bg-blue-600 text-white rounded-tr-none' : 'bg-white border border-gray-100 text-gray-800 rounded-tl-none'}`}>
-                  <p className="whitespace-pre-wrap">{msg.text}</p>
+                  <ReactMarkdown className="whitespace-pre-wrap" remarkPlugins={[remarkGfm]}>
+                    {msg.text}
+                  </ReactMarkdown>
                 </div>
               </div>
             </div>
